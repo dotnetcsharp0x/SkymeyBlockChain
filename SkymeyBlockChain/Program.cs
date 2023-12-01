@@ -1,4 +1,6 @@
 
+using System.Net;
+
 namespace SkymeyBlockChain
 {
     public class Program
@@ -14,16 +16,22 @@ namespace SkymeyBlockChain
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyMethod()
+                       .AllowAnyHeader()
+                       .AllowAnyOrigin();
+            }));
+
+            builder.WebHost.UseUrls("http://localhost:5020;https://localhost:5030;");
+
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
-            app.UseHttpsRedirection();
+            app.UseHttpsRedirection().UseCertificateForwarding().UseHsts();
+            app.UseCors("MyPolicy");
 
             app.UseAuthorization();
 
