@@ -1,0 +1,6 @@
+@SkymeyBlockChain_HostAddress = http://localhost:5020
+
+GET {{SkymeyBlockChain_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
