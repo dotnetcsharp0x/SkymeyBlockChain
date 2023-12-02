@@ -9,7 +9,21 @@
 
   <ItemGroup>
     <PackageReference Include="Chia-Client-API" Version="2.1.1.9" />
+    <PackageReference Include="ChilkatDnCore" Version="9.50.96" />
+    <PackageReference Include="Nancy" Version="2.0.0" />
+    <PackageReference Include="RestSharp" Version="110.2.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Skymey-main-lib">
+      <HintPath>..\..\Skymey-main-lib\Skymey-main-lib\bin\Release\net8.0\publish\Skymey-main-lib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\chia_ca.key" />
+    <None Include="wwwroot\private_ca.crt" />
   </ItemGroup>
 
 </Project>
